@@ -1,0 +1,24 @@
+machine:
+  python:
+    version: 3.6.0
+
+  environment:
+    ENV_TYPE: ci
+    DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/circle_test
+
+
+dependencies:
+  post:
+    - pip install flake8
+
+
+test:
+  override:
+    - flake8
+
+
+deployment:
+  prod:
+    branch: master
+    heroku:
+      appname: ssp-cabinet
