@@ -106,4 +106,4 @@ ENV/
 volumes
 
 # Project settings
-settings/local.py
+cabinet/settings/local.py
