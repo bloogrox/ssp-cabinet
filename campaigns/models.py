@@ -24,3 +24,10 @@ class CampaignFilter(models.Model):
 
     class Meta:
         unique_together = ('campaign', 'field',)
+
+
+class Dsp(models.Model):
+    name = models.CharField(max_length=128)
+    bid_url = models.CharField(max_length=256)
+    active = models.BooleanField()
+    ext_fields = models.ManyToManyField(Field)

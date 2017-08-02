@@ -17,3 +17,9 @@ class CampaignAdmin(admin.ModelAdmin):
 @admin.register(campaigns.models.Field)
 class FieldAdmin(admin.ModelAdmin):
     list_display = ('id', 'name',)
+
+
+@admin.register(campaigns.models.Dsp)
+class DspAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'active',)
+    list_filter = ('active',)
