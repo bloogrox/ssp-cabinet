@@ -13,6 +13,10 @@ class Campaign(models.Model):
     active = models.BooleanField()
     targetings = models.ManyToManyField(Field, through="CampaignFilter")
 
+    def get_targetings(self):
+        targetings = CampaignFilter.objects.filter(campaign=self)
+        return targetings
+
     def __str__(self):
         return self.name
 
@@ -21,6 +25,10 @@ class CampaignFilter(models.Model):
     campaign = models.ForeignKey(Campaign)
     field = models.ForeignKey(Field)
     value = models.CharField(max_length=1024)
+
+    def value_as_list(self):
+        return [val.strip()
+                for val in self.value.split(',')]
 
     class Meta:
         unique_together = ('campaign', 'field',)

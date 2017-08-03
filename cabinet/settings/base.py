@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'campaigns',
 
     'dynamic_preferences',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
