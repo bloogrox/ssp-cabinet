@@ -7,11 +7,26 @@ class CampaignFilterInline(admin.TabularInline):
     extra = 2
 
 
+def activate_campaigns(modeladmin, request, queryset):
+    queryset.update(active=True)
+
+
+activate_campaigns.short_description = "Activate selected campaigns"
+
+
+def deactivate_campaigns(modeladmin, request, queryset):
+    queryset.update(active=False)
+
+
+deactivate_campaigns.short_description = "Deactivate selected campaigns"
+
+
 @admin.register(campaigns.models.Campaign)
 class CampaignAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'active',)
     inlines = (CampaignFilterInline,)
     list_filter = ('active',)
+    actions = [activate_campaigns, deactivate_campaigns]
 
 
 @admin.register(campaigns.models.Field)
