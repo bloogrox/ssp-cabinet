@@ -10,3 +10,9 @@ postgres:
       - "5432:5432"
     volumes:
       - ./volumes/postgres:/var/lib/postgresql/data
+
+
+Redis:
+  image: 'redis:alpine'
+  ports:
+    - "6379:6379"
