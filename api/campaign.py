@@ -9,10 +9,11 @@ class CampaignFilterSerializer(serializers.ModelSerializer):
 
     field = serializers.StringRelatedField()
     values = serializers.ListField(source='value_as_list', read_only=True)
+    operator = serializers.ReadOnlyField(source='get_operator')
 
     class Meta:
         model = CampaignFilter
-        fields = ('field', 'values')
+        fields = ('field', 'operator', 'values')
 
 
 class CampaignSerializer(serializers.ModelSerializer):

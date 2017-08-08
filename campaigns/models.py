@@ -30,6 +30,9 @@ class CampaignFilter(models.Model):
         return [val.strip()
                 for val in self.value.split(',')]
 
+    def get_operator(self):
+        return 'IN'
+
     class Meta:
         unique_together = ('campaign', 'field',)
 
