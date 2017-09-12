@@ -28,3 +28,10 @@ class EndHour(IntegerPreference):
     name = 'end_hour'
     default = 20
     verbose_name = "End Hour"
+
+
+@global_preferences_registry.register
+class TokenBidInterval(IntegerPreference):
+    name = 'token_bid_interval'
+    default = 1
+    verbose_name = "Bid Per Token Interval (minutes)"

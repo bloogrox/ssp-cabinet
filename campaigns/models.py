@@ -24,7 +24,7 @@ class Campaign(models.Model):
 class CampaignFilter(models.Model):
     campaign = models.ForeignKey(Campaign)
     field = models.ForeignKey(Field)
-    value = models.CharField(max_length=1024)
+    value = models.TextField()
 
     def value_as_list(self):
         return [val.strip()

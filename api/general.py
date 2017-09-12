@@ -10,6 +10,8 @@ def general(request):
         "bids_volume": global_preferences["bid_request_volume"],
         "push_limit_per_token": global_preferences["push_per_token"],
         "start_hour": global_preferences["start_hour"],
-        "end_hour": global_preferences["end_hour"]
+        "end_hour": global_preferences["end_hour"],
+        "token_bid_interval": (
+            global_preferences["token_bid_interval"]),
     }
     return Response(settings)
