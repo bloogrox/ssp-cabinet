@@ -25,7 +25,14 @@ deactivate_campaigns.short_description = "Deactivate selected campaigns"
 
 @admin.register(campaigns.models.Campaign)
 class CampaignAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'dsp', 'pushes_sent', 'active',)
+    list_display = (
+        'id',
+        'name',
+        'dsp',
+        'subscriber_selection_size',
+        'pushes_sent',
+        'active',
+    )
     inlines = (CampaignFilterInline,)
     list_filter = ('active',)
     actions = [activate_campaigns, deactivate_campaigns]

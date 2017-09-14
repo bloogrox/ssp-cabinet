@@ -29,7 +29,13 @@ class CampaignSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Campaign
-        fields = ('id', 'name', 'dsp', 'targetings')
+        fields = (
+            'id',
+            'name',
+            'dsp',
+            'subscriber_selection_size',
+            'targetings'
+        )
 
 
 class CampaignList(mixins.ListModelMixin,

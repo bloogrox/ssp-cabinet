@@ -13,6 +13,7 @@ class Campaign(models.Model):
     active = models.BooleanField()
     targetings = models.ManyToManyField(Field, through="CampaignFilter")
     dsp = models.ForeignKey('Dsp')
+    subscriber_selection_size = models.PositiveIntegerField()
 
     def get_targetings(self):
         targetings = CampaignFilter.objects.filter(campaign=self)
