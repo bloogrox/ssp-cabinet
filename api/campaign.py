@@ -3,6 +3,7 @@ from rest_framework import generics
 from rest_framework import serializers
 
 from campaigns.models import Campaign, CampaignFilter
+from .dsp import DspSerializer
 
 
 class CampaignFilterSerializer(serializers.ModelSerializer):
@@ -18,6 +19,8 @@ class CampaignFilterSerializer(serializers.ModelSerializer):
 
 class CampaignSerializer(serializers.ModelSerializer):
 
+    dsp = DspSerializer()
+
     targetings = CampaignFilterSerializer(
         source='get_targetings',
         many=True,
@@ -26,7 +29,7 @@ class CampaignSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Campaign
-        fields = ('id', 'name', 'targetings')
+        fields = ('id', 'name', 'dsp', 'targetings')
 
 
 class CampaignList(mixins.ListModelMixin,

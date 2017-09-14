@@ -12,6 +12,7 @@ class Campaign(models.Model):
     name = models.CharField(max_length=128)
     active = models.BooleanField()
     targetings = models.ManyToManyField(Field, through="CampaignFilter")
+    dsp = models.ForeignKey('Dsp')
 
     def get_targetings(self):
         targetings = CampaignFilter.objects.filter(campaign=self)
@@ -42,3 +43,6 @@ class Dsp(models.Model):
     bid_url = models.CharField(max_length=256)
     active = models.BooleanField()
     ext_fields = models.ManyToManyField(Field)
+
+    def __str__(self):
+        return self.name
