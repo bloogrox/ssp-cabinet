@@ -20,5 +20,3 @@ DATABASES = {
         default=DATABASE_URL,
         engine='django.db.backends.postgresql_psycopg2')
 }
-
-REDIS_URI = os.environ['REDISCLOUD_URL']

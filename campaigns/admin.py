@@ -1,7 +1,5 @@
-import redis
 from django.contrib import admin
 import campaigns.models
-from cabinet.redis import REDIS_POOL
 
 
 class CampaignFilterInline(admin.TabularInline):
@@ -30,25 +28,11 @@ class CampaignAdmin(admin.ModelAdmin):
         'name',
         'dsp',
         'subscriber_selection_size',
-        'pushes_sent',
         'active',
     )
     inlines = (CampaignFilterInline,)
     list_filter = ('active',)
     actions = [activate_campaigns, deactivate_campaigns]
-
-    def pushes_sent(self, obj):
-        try:
-            client = redis.Redis(connection_pool=REDIS_POOL)
-            value = client.get(f"stats:campaign:{obj.id}:total-count")
-            try:
-                return int(value)
-            except TypeError:
-                return 0
-        except Exception:
-            return 'error'
-
-    pushes_sent.short_description = 'Pushes Sent'
 
 
 @admin.register(campaigns.models.Field)

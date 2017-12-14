@@ -19,5 +19,3 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-REDIS_URI = "redis://127.0.0.1:6379/0"
