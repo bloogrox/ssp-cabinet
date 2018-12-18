@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
     'dynamic_preferences',
     'rest_framework',
+    'route_traffic',
+
 ]
 
 MIDDLEWARE = [
